@@ -113,3 +113,18 @@ cv2.destroyAllWindows()
 ```py
 cv2.imwrite('output.jpg', image)
 ```
+
+## 6. Grey Scale Conversion
+
+- We can use cvtColor() function to change color of image
+
+### Why in grey scale?
+
+- Grey Scale image has less processing time
+- It has less complexity
+
+```py
+grey = cv2.cvtColor(image_location, cv.COLOR_BGR2GRAY)
+```
+
+- COLOR_CVR2GRAY => converts color image to gray
