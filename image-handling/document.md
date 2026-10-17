@@ -128,3 +128,95 @@ grey = cv2.cvtColor(image_location, cv.COLOR_BGR2GRAY)
 ```
 
 - COLOR_CVR2GRAY => converts color image to gray
+
+---
+
+---
+
+---
+
+---
+
+# Advance Techniques
+
+## Image Resizing and Scaling
+
+### Resizing
+
+- It changes the image's width and height
+- Example -:
+
+```txt
+Original: 1200 × 1600
+Resized:   600 × 800
+```
+
+- We use cv2.resize() function to resize the image
+
+```py
+resized = cv2.resize(src_img, dsize, fx,fy, interpolation)
+```
+
+- src_img ==> Image to be resized location
+- dsize ==> New Size (width,height)
+
+      - Important: OpenCV expects dimensions in this order:
+
+#### Notes : Problem with resizing - distortion
+
+Suppose the original image is:
+
+```txt
+1200 × 1600
+```
+
+Its aspect ratio is:
+
+```txt
+1200 ÷ 1600 = 0.75
+```
+
+If we resize it to 600 × 600, its new aspect ratio becomes:
+
+```txt
+600 ÷ 600 = 1
+```
+
+- The image will appear stretched or squeezed because its proportions changed.
+
+### Scaling
+
+- Instead of setting an exact size, use fx and fy:
+
+```py
+resized_image = cv2.resize(
+    image,
+    None,
+    fx=0.5,
+    fy=0.5
+)
+```
+
+- fx is the horizontal scale factor.
+- fy is the vertical scale factor.
+- None tells OpenCV to calculate the dimensions.
+
+### Reduce to 50%
+
+```py
+smaller_image = cv2.resize(
+    image,
+    None,
+    fx=0.5,
+    fy=0.5
+)
+```
+
+### Calculation
+
+```txt
+New width  = 1200 × 0.5 = 600
+New height = 1600 × 0.5 = 800
+```
+
+#### Using the same value for fx and fy preserves the aspect ratio.
